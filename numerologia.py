@@ -38,11 +38,33 @@ def somar_letras():
 		for idx_numeros in range(len(mapa)):
 			if nome[caractere] in mapa.values()[idx_numeros]:
 				acumulador = acumulador + mapa.keys()[idx_numeros]
+				# TODO reusar no formatar_lista()
 				letras = '(' + ' '.join(mapa.values()[idx_numeros]).replace(' ', ' ou ') + ')'
 				print("%s %d %s" % (nome[caractere], mapa.keys()[idx_numeros], letras))
 				break
 
 	return acumulador
+
+
+def formatar_lista(lista):
+	return '(' + ' '.join(lista).replace(' ', ', ') + ')'
+
+
+def pegar_descricao(numero):
+	sephiroth = {
+		1: ['N/A', 'Cosme/Damiao', 'N/A'],
+		2: ['Netuno', 'N/A', 'N/A'],
+		3: ['Saturno', 'Xango', 'Capricornio/Aquario'],
+		4: ['Jupiter', 'Oxossi', 'Sagitario/Peixes'],
+		5: ['Marte', 'Ogum', 'Aries/Escorpiao'],
+		6: ['Sol', 'Oxala', 'Leao'],
+		7: ['Venus', 'Oxum', 'Touro/Libra'],
+		8: ['Mercurio', 'Exu', 'Gemeos/Virgem'],
+		9: ['Lua', 'Iemanja', 'Cancer'],
+	}
+
+	return sephiroth[numero]
+
 
 
 def calcular_numero_magico(soma):
@@ -67,5 +89,5 @@ def calcular_numero_magico(soma):
 soma = somar_letras()
 resultado = calcular_numero_magico(soma)
 print("total: %s" % soma)
-print("resultado: %d" % resultado)
+print("resultado: %d %s" % (resultado, formatar_lista(pegar_descricao(resultado))))
 
