@@ -6,12 +6,12 @@ from string import ascii_uppercase as letters
 
 if len(sys.argv) < 2:
 	print("Kabbalah Numerology (c) 2018 Geraldo Netto"
-				"\nUso:"
-				"\n$ %s ana"
-				"\nA: 1"
-				"\nN: 5"
-				"\nA: 1"
-				"\ntotal: 7 (Venus, Oxum, Touro/Libra)" % str(sys.argv[0]))
+			"\nUso:"
+			"\n$ %s ana"
+			"\nA: 1"
+			"\nN: 5"
+			"\nA: 1"
+			"\ntotal: 7 [Venus, Oxum, Touro/Libra]" % str(sys.argv[0]))
 	sys.exit(0)
 
 
@@ -42,7 +42,7 @@ def calculate_magick_number(total):
 		total_str = str(total)
 		total_len = len(total_str)
 		if total_len == 0:
-			# a exception ja tem a mensagem
+			# the exception already contains the message
 			raise ValueError("")
 
 		if total_len == 1:
@@ -73,7 +73,8 @@ def get_sephiroth(number):
 		9: ['Lua', 'Iemanja', 'Cancer'],
 	}
 
-	return str(sephiroth[number]).replace("[", "(").replace("]", ")").replace("'", "")
+	return str(sephiroth[number]).replace("'", "")
+
 
 number = calculate_magick_number(char_to_number())
 print("total: %d %s" % (number, get_sephiroth(number)))
